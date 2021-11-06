@@ -2,7 +2,7 @@ iframe {
     position: fixed;
     left: 0px;
     top: 0px;
-    margin: none;
+    margin: 10px;
     padding: none;
     border: none;
     display: block;

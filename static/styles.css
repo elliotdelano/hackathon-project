@@ -17,9 +17,13 @@ iframe {
 }
 
 body{
-    background-image: linear-gradient(darkslategray, darkslategray);
+    background-image: linear-gradient(lightgray, lightgray);
 }
 
 .bg-header{
-    background-image: linear-gradient(green, teal);
+    background-image: linear-gradient(mediumseagreen, limegreen);
+}
+
+.bg-ec{
+    background-image: linear-gradient(palegreen,rgb(185, 228, 255));
 }

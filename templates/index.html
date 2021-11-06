@@ -30,7 +30,7 @@
     </div>
   </nav>
 
-  <div class="row m-0">
+  <div class="row m-0 mt-4">
     <div class="card bg-header text-light border-0 rounded-0">
       <div class="card-body">
         <h1 class="text-center display-6">What is ChanceMe AI?</h1>
@@ -44,44 +44,156 @@
   </div>
   <div class="row m-3 mt-4">
     <div class="container">
-      <div class="card bg-light text-dark">
+      <div class="card bg-light text-dark shadow-lg">
         <div class="card-body">
           <h1 class="text-center">Input Form</h1>
           <p class="text-center ">Can you win college?</p>
           <form action="/chanceme" method="POST" enctype="multipart/form-data" autocomplete="off">
-            
-            <div class="row mb-5">
+
+            <div class="row mb-3">
               <div class="col">
-                  <label for="gpa" class="form-label h3">GPA</label>
-                  <input type="number" class="form-control" id="gpa" name="gpa"
-                    placeholder="enter a number...">
+                <label for="gpa" class="form-label h3">GPA</label>
+                <input type="number" class="form-control" id="gpa" name="gpa" placeholder="enter a number...">
               </div>
               <div class="col">
-                  <label for="sat" class="form-label h3">SAT Score</label>
-                  <input type="number" class="form-control" id="sat" name="sat"
-                    placeholder="enter a number...">
+                <label for="sat" class="form-label h3">SAT Score</label>
+                <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
               </div>
-              <div class="col-6">
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
                 <label for="school" class="form-label h3">College</label>
-                <input type="text" class="form-control" id="school" name="school"
-                  placeholder="enter text...">
-            </div>
-            </div>
-            <div class="row">
-              <div class="col"></div>
-              <div class="col">
-                <div class="row">                
-                  <button type="submit" class="btn btn-lg btn-primary">Chance Me!</button>
-                </div>
+                <input type="text" class="form-control" id="school" name="school" placeholder="enter text...">
               </div>
-              <div class="col"></div>
             </div>
 
-          </form>
-        </div>
-      </div>
+            <div class="card bg-ec text-light shadow-sm mb-5 text-dark">
+              <div class="card-body">
+                <h1 class="text-center">Extracurriculars</h1>
+                <p class="text-center ">Input up to 10 extracurricular activities</p>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 1</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 2</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 3</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 4</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 5</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 6</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 7</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 8</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 9</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-10">
+                    <label for="sat" class="form-label">Extracurricular 10</label>
+                    <input type="text" class="form-control" id="sat" name="sat" placeholder="enter text...">
+                  </div>
+                  <div class="col">
+                    <label for="sat" class="form-label">Total Hours</label>
+                    <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
+                  </div>
 
+                </div>
+
+              </div>
+            </div>
+
+        </div>
+
+        <div class="row mb-4">
+          <div class="col"></div>
+          <div class="col">
+            <div class="row">
+              <button type="submit" class="btn btn-lg btn-primary">Chance Me!</button>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+
+        </form>
+      </div>
     </div>
+
+  </div>
   </div>
 
 </body>
@@ -89,5 +201,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script src="../js/main.js"></script>
 
 </html>

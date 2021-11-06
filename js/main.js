@@ -17,18 +17,17 @@ xhttp.onreadystatechange = function () {
 
     for (let name of nameGlobal) {
         let a = document.createElement("a")
+        let li = document.createElement("li")
         let node = document.createTextNode(name)
         a.appendChild(node)
-
-        document.getElementById("collegeDropdown").appendChild(a)
+        li.appendChild(a)
+        a.classList.add("dropdown-item","h6")
+        a.onclick = function () {document.getElementById("school").value = name}
+        document.getElementById("collegeDropdown").appendChild(li)
     }
 };
 xhttp.open("GET", "/../Static/CollegeAdmissionData.tsv", true);
 xhttp.send();
-
-function myFunction() {
-    document.getElementById("collegeDropdown").classList.toggle("show");
-}
 
 function filterFunction() {
     var input, filter, a, i;

@@ -4,19 +4,21 @@ import pandas as pd
 import logging
 import nltk
 
-import json_reader
-from sentiment_score import clean_text, calculate_sentiment_score
-from reddit_scraper.reddit_scraper.spiders.reddit_post_scraper import RedditPostCrawler
+#import json_reader
+#from sentiment_score import clean_text, calculate_sentiment_score
+#from reddit_scraper.reddit_scraper.spiders.reddit_post_scraper import RedditPostCrawler
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def compute_sentiment(term):
     # Initial setup: Disable scrapy logs and download NLTK files
     logging.getLogger('scrapy').propagate = False
     nltk.download('averaged_perceptron_tagger', quiet=True)
     nltk.download('wordnet', quiet=True)
 
     # Ask for user query
-    subreddit = input('Subreddit: ')
-    term = input('Search term: ')
+    #subreddit = input('Subreddit: ')
+    subreddit = 'chanceme'
+    #term = input('Search term: ')
     term = term.replace(' ', '+')
 
     # Start crawler process

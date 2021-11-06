@@ -1,5 +1,7 @@
 from flask import Flask , render_template, session, request, jsonify, redirect, url_for
-#from sentiment import sentiment
+from sentiment import main, json_reader
+from sentiment.sentiment_score import clean_text, calculate_sentiment_score
+from sentiment.reddit_scraper.reddit_scraper.spiders.reddit_post_scraper import RedditPostCrawler
 from algo import chancer
 app = Flask(__name__)
 
@@ -27,6 +29,7 @@ def chanceme():
         ec_7 = request.form['ec_7']
         ec_8 = request.form['ec_8']
         ec_9 = request.form['ec_9']
-
-        chancer = chancer.chancer()
-
+        ecs = [ec_0,ec_1,ec_2,ec_3,ec_4,ec_5,ec_6,ec_7,ec_8,ec_9]
+        bot = chancer.chancer(school,sat,gpa,ecs,[])
+        for ec in ecs:
+            sent = main.compute_sentiment(ec)

@@ -28,6 +28,9 @@ class chancer:
         #competitiveness bonus
         #substring search for things like nmsf--non goat awards
 
+    def get_acceptance(self):
+        return 0
+
 
 
 

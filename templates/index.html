@@ -64,7 +64,20 @@
             <div class="row mb-3">
               <div class="col">
                 <label for="school" class="form-label h3">College</label>
-                <input type="text" class="form-control" id="school" name="school" placeholder="enter text...">
+                <div class="dropdown">
+                  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                  <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#about">About</a>
+                    <a href="#base">Base</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#custom">Custom</a>
+                    <a href="#support">Support</a>
+                    <a href="#tools">Tools</a>
+                  </div>
+                </div>
+                <!-- <input type="text" class="form-control" id="school" name="school" placeholder="enter text..."> -->
               </div>
             </div>
 

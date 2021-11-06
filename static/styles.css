@@ -2,7 +2,7 @@ iframe {
     position: fixed;
     left: 0px;
     top: 0px;
-    margin: 10px;
+    margin: none;
     padding: none;
     border: none;
     display: block;
@@ -13,7 +13,7 @@ iframe {
 }
 
 .viewport{
-    background: blue;
+    background: black;
 }
 
 body{

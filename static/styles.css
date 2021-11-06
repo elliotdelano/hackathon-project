@@ -25,5 +25,5 @@ body{
 }
 
 .bg-ec{
-    background-image: linear-gradient(palegreen,lightgoldenrodyellow);
+    background-image: linear-gradient(palegreen,rgb(185, 228, 255));
 }

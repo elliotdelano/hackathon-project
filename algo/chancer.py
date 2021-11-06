@@ -3,8 +3,30 @@ import numpy as np
 bonus = .1
 hours_spread = 100
 
+college_data = open("/../static/CollegeAdmissionData.tsv")
+
 def gaussian(x, mu, sig):
     return np.exp(-np.power(x - mu, 2.) / (2 * np.power(sig, 2.)))
+
+def sat_range_from_school(school):
+    read_tsv = csv.reader(college_data, delimiter="\n")
+    schools = []
+    scores = []
+    for row in read_tsv:
+        value = row.split("\t")
+        schools.push(value[0])
+        scores.push(value[1].split("\r")[0])
+    for i in range(len(schools)):
+        if school == schools[i]:
+            return sat_desipher(scores[i])
+
+def sat_desipher(raw):
+    value = raw
+    if len(value) == 1:
+        value = '0' + raw
+    if len(value) == 2:
+        value = '1' + value + '0'
+    return int(value)
 
 class chancer:
     def __init__(self, school, sat, gpa, ecs, awards):
@@ -20,8 +42,12 @@ class chancer:
         return 0
 
     def rate_sat(self):
-        #sat rating
-        return 0
+        school_range = sat_range_from_school(self.school)
+        if self.sat >= 1600:
+            return 0.0
+        if self.sat < 1600:
+            return 1 - self.sat / school_range
+        return None
 
     def rate_gpa(self):
         if self.gpa >= 4.0:

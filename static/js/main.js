@@ -59,7 +59,9 @@ async function update_progress(status_url, fast) {
                     results.push(data.result || 0)
                 }
             }
-        });
+        }).fail(function () {
+            results.push(0)
+        })
     }
     if (results.length == status_url.length) {
         let data = {

@@ -1,6 +1,6 @@
 import numpy as np
 import csv
-bonus = .1
+bonus = .05
 hours_spread = 100
 
 college_data = "static/CollegeAdmissionData.tsv"
@@ -55,7 +55,7 @@ class chancer:
                 goat_rating = 1.0
             if ec[0].lower() in "State Champion".lower():
                 goat_rating = 1.0
-            if ec[0].lower() in "Research Science Institute".lower():
+            if "Research Science Institute".lower() in ec[0].lower():
                 goat_rating = 1.0
             if ec[0].lower() in "MOSTEC".lower():
                 goat_rating = 1.0
@@ -76,13 +76,9 @@ class chancer:
         return goat_rating
 
     def rate_sat(self):
-
         school_range = sat_range_from_school(self.school)
-        if int(self.sat) >= 1600:
-            return 0.0
-        if int(self.sat) < 1600:
-            return 1 - int(self.sat) / school_range
-
+        if int(self.sat) < school_range:
+            return 1 - int(self.sat)/1600
         return 0
 
     def rate_gpa(self):
@@ -131,4 +127,5 @@ class profile:
 
     def chance(self):
         chance = max(self.acceptance_rate * (self.ecs_sent) - (self.sat_rating + self.gpa_rating) + bonus * (self.ecs_bonus), self.goat_rating)
-        return min(chance, .9)
+        print(chance)
+        return min(chance, .95)

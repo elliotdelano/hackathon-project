@@ -73,7 +73,8 @@ function update_progress(status_url, fast) {
             type: 'POST',
             url: '/results',
             datatype: 'json',
-            data: data
+            data: data,
+            contentType: 'application/json'
         });
     } else {
         setTimeout(function () {

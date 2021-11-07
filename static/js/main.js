@@ -88,7 +88,7 @@ function update_progress(status_url, fast) {
 // }
 
 function start_long_task() {
-    let data = {
+    let datas = {
         sat: $('#sat').value,
         gpa: $('#gpa').value,
         ec_0: $('#ec_0').value,
@@ -114,6 +114,8 @@ function start_long_task() {
         school: $('#school').value,
     }
 
+    console.log(datas)
+
     $.ajax({
         type: 'POST',
         url: '/chanceme',
@@ -122,6 +124,6 @@ function start_long_task() {
             let status_url = sfgsd.ids
             update_progress(status_url, sfgsd)
         },
-        data: data
+        data: datas
     });
 }

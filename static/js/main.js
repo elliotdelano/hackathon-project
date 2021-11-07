@@ -52,7 +52,7 @@ function filterFunction() {
 async function update_progress(status_url, fast) {
     let results = []
     for (let url of status_url) {
-        $.getJSON(url, function (data) {
+        await $.getJSON(url, function (data) {
             if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
                 console.log(data)
                 if ('result' in data) {

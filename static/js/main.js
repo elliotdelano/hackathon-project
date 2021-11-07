@@ -83,35 +83,35 @@ function update_progress(status_url, fast) {
 
 }
 
-function $j(str) {
-    return document.getElementById(str)
-}
+// function $(str) {
+//     return document.getElementById(str)
+// }
 
 function start_long_task() {
     let data = {
-        sat: $j('sat').value,
-        gpa: $j('gpa').value,
-        ec_0: $j('ec_0').value,
-        hr_0: $j('hr_0').value,
-        ec_1: $j('ec_1').value,
-        hr_1: $j('hr_1').value,
-        ec_2: $j('ec_2').value,
-        hr_2: $j('hr_2').value,
-        ec_3: $j('ec_3').value,
-        hr_3: $j('hr_3').value,
-        ec_4: $j('ec_4').value,
-        hr_4: $j('hr_4').value,
-        ec_5: $j('ec_5').value,
-        hr_5: $j('hr_5').value,
-        ec_6: $j('ec_6').value,
-        hr_6: $j('hr_6').value,
-        ec_7: $j('ec_7').value,
-        hr_7: $j('hr_7').value,
-        ec_8: $j('ec_8').value,
-        hr_8: $j('hr_8').value,
-        ec_9: $j('ec_9').value,
-        hr_9: $j('hr_9').value,
-        school: $j('school').value,
+        sat: $('#sat').value,
+        gpa: $('#gpa').value,
+        ec_0: $('#ec_0').value,
+        hr_0: $('#hr_0').value,
+        ec_1: $('#ec_1').value,
+        hr_1: $('#hr_1').value,
+        ec_2: $('#ec_2').value,
+        hr_2: $('#hr_2').value,
+        ec_3: $('#ec_3').value,
+        hr_3: $('#hr_3').value,
+        ec_4: $('#ec_4').value,
+        hr_4: $('#hr_4').value,
+        ec_5: $('#ec_5').value,
+        hr_5: $('#hr_5').value,
+        ec_6: $('#ec_6').value,
+        hr_6: $('#hr_6').value,
+        ec_7: $('#ec_7').value,
+        hr_7: $('#hr_7').value,
+        ec_8: $('#ec_8').value,
+        hr_8: $('#hr_8').value,
+        ec_9: $('#ec_9').value,
+        hr_9: $('#hr_9').value,
+        school: $('#school').value,
     }
 
     $.ajax({

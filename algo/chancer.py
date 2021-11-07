@@ -1,9 +1,9 @@
 import numpy as np
-
+import csv
 bonus = .1
 hours_spread = 100
 
-college_data = open("/../static/CollegeAdmissionData.tsv")
+college_data = open("static/CollegeAdmissionData.tsv")
 
 def gaussian(x, mu, sig):
     return np.exp(-np.power(x - mu, 2.) / (2 * np.power(sig, 2.)))

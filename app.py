@@ -9,15 +9,11 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
 @app.route('/chanceme',methods=["GET","POST"])
 def chanceme():
     if request.method == "POST":
-        school = request.form['school']
         sat = request.form['sat']
+        school = request.form['school']
         gpa = request.form['gpa']
         ec_0 = request.form['ec_0']
         hr_0 = request.form['hr_0']
@@ -51,3 +47,8 @@ def chanceme():
         sat_rating = bot.rate_sat()
         gpa_rating = bot.rate_gpa()
         ec_bonus = bot.ecs_bonus()
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+

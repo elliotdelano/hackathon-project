@@ -61,6 +61,9 @@ function update_progress(status_url, fast) {
             }
         });
     }
+    console.log(results.length)
+    console.log(results)
+    console.log(status_url.length)
     if (results.length == status_url.length) {
         let data = {
             sents: results,

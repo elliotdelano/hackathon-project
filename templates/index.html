@@ -1,252 +1,276 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="/static/styles.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container-fluid">
-      <img src="/static/img/die-01.png" alt="" width="36" height="36" class="d-inline-block align-text-top">
-      <a class="navbar-brand" href="#">ChanceMe AI</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
-        aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsExample04">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Input</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Credits</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="row m-0 mt-4">
-    <div class="card bg-header text-light border-0 rounded-0">
-      <div class="card-body">
-        <h1 class="text-center display-6">What is ChanceMe AI?</h1>
-        <p class="text-center ">
-          ChanceMe AI takes in all key indicators of your academic
-          performance as well as the colleges you are interested in
-          applying to, and produces a realistic result of your likelihood
-          of acceptance. Try it out in the form below.</p>
-      </div>
-    </div>
-  </div>
-  <div class="row m-3 mt-4">
-    <div class="container">
-      <div class="card bg-light text-dark shadow">
-        <div class="card-body">
-          <h1 class="text-center">Input Form</h1>
-          <p class="text-center ">Can you win college?</p>
-          <form action="/chanceme" method="POST" enctype="multipart/form-data" autocomplete="off">
-
-            <div class="row mb-3">
-              <div class="col">
-                <label for="gpa" class="form-label h3">GPA</label>
-                <input type="number" class="form-control" id="gpa" name="gpa" placeholder="enter a number...">
-              </div>
-              <div class="col">
-                <label for="sat" class="form-label h3">SAT Score</label>
-                <input type="number" class="form-control" id="sat" name="sat" placeholder="enter a number...">
-              </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <img src="/static/img/die-01.png" alt="" width="36" height="36" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="#">ChanceMe AI</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Input</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Credits</a>
+                    </li>
+                </ul>
             </div>
-
-            <div class="row mb-3">
-              <label for="school" class="form-label h3">College</label>
-              <div class="col-3">
-                <div class="dropdown"><button type="button" data-bs-toggle="dropdown"
-                    class="w-100 btn btn-light border-secondary dropdown-toggle">Select
-                    College</button>
-                  <ul id="collegeDropdown" class="dropdown-menu p-2 overflow-auto">
-                    <li><input type="text" class="form-control mb-3" placeholder="Search.." id="collegeInputField"
-                        onkeyup="filterFunction()"></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="col">
-                <input type="text" class="form-control bg-white" id="school" name="school"
-                  placeholder="no college selected" readonly>
-              </div>
-            </div>
-
-            <div class="card bg-ec text-light shadow-sm text-dark">
-              <div class="card-body">
-                <h1 class="text-center">Awards & Extracurriculars</h1>
-                <p class="text-center ">Input up to 10 extracurricular activities</p>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_0" class="form-label">Entry 1</label>
-                    <input type="text" class="form-control" id="ec_0" name="ec_0" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_0" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_0" name="hr_0" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_1" class="form-label">Entry 2</label>
-                    <input type="text" class="form-control" id="ec_1" name="ec_1" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_1" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_1" name="hr_1" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_2" class="form-label">Entry 3</label>
-                    <input type="text" class="form-control" id="ec_2" name="ec_2" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_2" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_2" name="hr_2" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_3" class="form-label">Entry 4</label>
-                    <input type="text" class="form-control" id="ec_3" name="ec_3" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_3" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_3" name="hr_3" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_4" class="form-label">Entry 5</label>
-                    <input type="text" class="form-control" id="ec_4" name="ec_4" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_4" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_4" name="hr_4" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_5" class="form-label">Entry 6</label>
-                    <input type="text" class="form-control" id="ec_5" name="ec_5" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_5" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_5" name="hr_5" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_6" class="form-label">Entry 7</label>
-                    <input type="text" class="form-control" id="ec_6" name="ec_6" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_6" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_6" name="hr_6" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_7" class="form-label">Entry 8</label>
-                    <input type="text" class="form-control" id="ec_7" name="ec_7" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_7" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_7" name="hr_7" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_8" class="form-label">Entry 9</label>
-                    <input type="text" class="form-control" id="ec_8" name="ec_8" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_8" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_8" name="hr_8" placeholder="enter a number...">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-10">
-                    <label for="ec_9" class="form-label">Entry 10</label>
-                    <input type="text" class="form-control" id="ec_9" name="ec_9" placeholder="enter text...">
-                  </div>
-                  <div class="col">
-                    <label for="hr_9" class="form-label">Total Hours</label>
-                    <input type="number" class="form-control" id="hr_9" name="hr_9" placeholder="enter a number...">
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-
         </div>
+    </nav>
 
-        <div class="row mb-4">
-          <div class="col"></div>
-          <div class="col">
-            <div class="row">
-              <button type="button" data-bs-toggle="modal" data-bs-target="#loadingModal" class="btn btn-lg btn-primary p-3"
-                id="getResults">Chance Me!</button>
+    <div class="row m-0 mt-4">
+        <div class="card bg-header text-light border-0 rounded-0">
+            <div class="card-body">
+                <h1 class="text-center display-6">What is ChanceMe AI?</h1>
+                <p class="text-center ">
+                    ChanceMe AI takes in all key indicators of your academic
+                    performance as well as the colleges you are interested in
+                    applying to, and produces a realistic result of your likelihood
+                    of acceptance. Try it out in the form below.</p>
             </div>
-          </div>
-          <div class="col"></div>
         </div>
-
-        </form>
-      </div>
     </div>
-  </div>
-  </div>
+    <div class="row m-3 mt-4">
+        <div class="container">
+            <div class="card bg-light text-dark shadow">
+                <div class="card-body">
+                    <h1 class="text-center">Input Form</h1>
+                    <p class="text-center ">Can you win college?</p>
+                    <form action="/chanceme" method="POST" enctype="multipart/form-data" autocomplete="off">
 
-  <!-- Modal -->
-  <div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
-    data-bs-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="gpa" class="form-label h3">GPA</label>
+                                <input type="number" class="form-control" id="gpa" name="gpa"
+                                    placeholder="enter a number...">
+                            </div>
+                            <div class="col">
+                                <label for="sat" class="form-label h3">SAT Score</label>
+                                <input type="number" class="form-control" id="sat" name="sat"
+                                    placeholder="enter a number...">
+                            </div>
+                        </div>
 
-        <div class="card bg-light text-dark shadow-lg">
-          <div class="card-body">
-            <h1 class="text-center">Processing...</h1>
-            <p class="text-center ">Please wait for the task to finish.</p>
-            <div class="progress m-3">
-              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        <div class="row mb-3">
+                            <label for="school" class="form-label h3">College</label>
+                            <div class="col-3">
+                                <div class="dropdown"><button type="button" data-bs-toggle="dropdown"
+                                        class="w-100 btn btn-light border-secondary dropdown-toggle">Select
+                                        College</button>
+                                    <ul id="collegeDropdown" class="dropdown-menu p-2 overflow-auto">
+                                        <li><input type="text" class="form-control mb-3" placeholder="Search.."
+                                                id="collegeInputField" onkeyup="filterFunction()"></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <input type="text" class="form-control bg-white" id="school" name="school"
+                                    placeholder="no college selected" readonly>
+                            </div>
+                        </div>
+
+                        <div class="card bg-ec text-light shadow-sm text-dark">
+                            <div class="card-body">
+                                <h1 class="text-center">Awards & Extracurriculars</h1>
+                                <p class="text-center ">Input up to 10 extracurricular activities</p>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_0" class="form-label">Entry 1</label>
+                                        <input type="text" class="form-control" id="ec_0" name="ec_0"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_0" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_0" name="hr_0"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_1" class="form-label">Entry 2</label>
+                                        <input type="text" class="form-control" id="ec_1" name="ec_1"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_1" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_1" name="hr_1"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_2" class="form-label">Entry 3</label>
+                                        <input type="text" class="form-control" id="ec_2" name="ec_2"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_2" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_2" name="hr_2"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_3" class="form-label">Entry 4</label>
+                                        <input type="text" class="form-control" id="ec_3" name="ec_3"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_3" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_3" name="hr_3"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_4" class="form-label">Entry 5</label>
+                                        <input type="text" class="form-control" id="ec_4" name="ec_4"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_4" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_4" name="hr_4"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_5" class="form-label">Entry 6</label>
+                                        <input type="text" class="form-control" id="ec_5" name="ec_5"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_5" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_5" name="hr_5"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_6" class="form-label">Entry 7</label>
+                                        <input type="text" class="form-control" id="ec_6" name="ec_6"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_6" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_6" name="hr_6"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_7" class="form-label">Entry 8</label>
+                                        <input type="text" class="form-control" id="ec_7" name="ec_7"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_7" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_7" name="hr_7"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_8" class="form-label">Entry 9</label>
+                                        <input type="text" class="form-control" id="ec_8" name="ec_8"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_8" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_8" name="hr_8"
+                                            placeholder="enter a number...">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-10">
+                                        <label for="ec_9" class="form-label">Entry 10</label>
+                                        <input type="text" class="form-control" id="ec_9" name="ec_9"
+                                            placeholder="enter text...">
+                                    </div>
+                                    <div class="col">
+                                        <label for="hr_9" class="form-label">Total Hours</label>
+                                        <input type="number" class="form-control" id="hr_9" name="hr_9"
+                                            placeholder="enter a number...">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col"></div>
+                    <div class="col">
+                        <div class="row">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#loadingModal"
+                                class="btn btn-lg btn-primary p-3" id="getResults" onclick="start_long_task()">Chance
+                                Me!</button>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+
+                </form>
             </div>
-          </div>
         </div>
-
-
-      </div>
     </div>
-  </div>
+    </div>
 
-  <div class="row m-3 mt-4">
-    <div class="container">
-      <div class="card bg-light text-dark shadow">
-        <div class="card-body">
-          <h1 class="text-center">Credits</h1>
-          <p class="text-center ">Things that made this possible</p>
+    <!-- Modal -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+        data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="card bg-light text-dark shadow-lg">
+                    <div class="card-body">
+                        <h1 class="text-center">Processing...</h1>
+                        <p class="text-center ">Please wait for the task to finish.</p>
+                        <div class="progress m-3">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+
+    <div class="row m-3 mt-4">
+        <div class="container">
+            <div class="card bg-light text-dark shadow">
+                <div class="card-body">
+                    <h1 class="text-center">Credits</h1>
+                    <p class="text-center ">Things that made this possible</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 
 <script src="/static/js/main.js"></script>
 

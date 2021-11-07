@@ -45,9 +45,9 @@ function filterFunction() {
     }
 }
 
-$(function () {
-    $('#getResults').click(start_long_task);
-});
+// $(function () {
+//     $('#getResults').click(start_long_task);
+// });
 
 function update_progress(status_url, fast) {
     let results = []
@@ -81,6 +81,10 @@ function update_progress(status_url, fast) {
         }, 2000);
     }
 
+}
+
+function $(str) {
+    return document.getElementById(str)
 }
 
 function start_long_task() {

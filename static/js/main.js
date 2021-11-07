@@ -142,14 +142,18 @@ function start_long_task() {
 
     console.log(datas)
 
-    $.ajax({
-        type: 'POST',
-        url: '/chanceme',
-        datatype: 'json',
-        data: JSON.stringify(datas),
-        success: function (sfgsd) {
-            let status_url = sfgsd.ids
-            update_progress(status_url, sfgsd)
-        }
-    });
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '/chanceme',
+    //     datatype: 'json',
+    //     data: JSON.stringify(datas),
+    //     success: function (sfgsd) {
+    //         let status_url = sfgsd.ids
+    //         update_progress(status_url, sfgsd)
+    //     }
+    // });
+    $.post('/chanceme', JSON.stringify(datas), function (sfgsd) {
+        let status_url = sfgsd.ids
+        update_progress(status_url, sfgsd)
+    })
 }

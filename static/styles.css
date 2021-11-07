@@ -25,7 +25,7 @@ body{
 }
 
 .bg-ec{
-    background-image: linear-gradient(palegreen,rgb(185, 228, 255));
+    background-image: linear-gradient(rgb(213, 238, 213),rgb(207, 224, 235));
 }
 
 /* Dropdown Button */

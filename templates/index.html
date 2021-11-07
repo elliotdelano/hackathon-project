@@ -9,6 +9,7 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
+      <img src="/static/img/die-01.png" alt="" width="36" height="36" class="d-inline-block align-text-top">
       <a class="navbar-brand" href="#">ChanceMe AI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
         aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +75,7 @@
               </div>
 
               <div class="col">
-                <input type="text" class="form-control bg-white" id="school" name="school" placeholder="no college selected"  readonly>
+                <input type="text" class="form-control bg-white" id="school" name="school" placeholder="no college selected" readonly>
               </div>
             </div>
 
@@ -206,6 +207,29 @@
   </div>
   </div>
 
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+          <div class="card bg-light text-dark shadow-lg">
+            <div class="card-body">
+              <h1 class="text-center">Processing...</h1>
+              <p class="text-center ">Please wait for the task to finish.</p>
+              <div class="progress m-3">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+
+
+      </div>
+    </div>
+  </div>
 </body>
 
 

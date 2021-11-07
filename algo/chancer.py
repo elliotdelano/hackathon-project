@@ -38,30 +38,51 @@ class chancer:
     def goat_status(self):
         goat_rating = 0.0
         for ec in self.ecs:
-            if ec.lower() in "IMO medalist".lower():
+            print(ec[0])
+            if ec[0].lower() in "IMO medalist".lower():
                 goat_rating = 1.0
-            if ec.lower() in "IChO medalist".lower():
+            if ec[0].lower() in "IChO medalist".lower():
                 goat_rating = 1.0
-            if ec.lower() in "IOI medalist".lower():
+            if ec[0].lower() in "IOI medalist".lower():
                 goat_rating = 1.0
-            if ec.lower() in "IOL medalist".lower():
+            if ec[0].lower() in "IOL medalist".lower():
                 goat_rating = 1.0
-            if ec.lower() in "IBO medalist".lower():
+            if ec[0].lower() in "IBO medalist".lower():
                 goat_rating = 1.0
-            if ec.lower() in "IPhO medalist".lower():
+            if ec[0].lower() in "IPhO medalist".lower():
                 goat_rating = 1.0
-        #ec/award substring if statements
-        #check for t20 names + research (check for name then research, not a combined string)
+            if ec[0].lower() in "National Champion".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "State Champion".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "Research Science Institute".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "MOSTEC".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "MITES".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "ISEF".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "Telluride Association Summer Program (TASP)".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "Program in Mathematics for Young Students (PROMYS)".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "Questbridge Prep Scholar".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "Johns Hopkins Center for Talented Youth".lower():
+                goat_rating = 1.0
+            if ec[0].lower() in "fly-in program".lower():
+                goat_rating = 1.0
         return goat_rating
 
     def rate_sat(self):
-        '''
+
         school_range = sat_range_from_school(self.school)
         if int(self.sat) >= 1600:
             return 0.0
         if int(self.sat) < 1600:
             return 1 - int(self.sat) / school_range
-        '''
+
         return 0
 
     def rate_gpa(self):
@@ -72,7 +93,7 @@ class chancer:
         return 0.0
 
     def ecs_bonus(self):
-        commitment_rating = 1 - gaussian(sum([ec[1] for ec in self.ecs]),0,hours_spread)
+        commitment_rating = 1 - gaussian(sum([int(ec[1]) for ec in self.ecs]),0,hours_spread)
         leadership_rating = 0
         for ec in self.ecs:
             if "captain" in ec[0].lower():
@@ -83,16 +104,13 @@ class chancer:
                 leadership_rating += 1
             if "research" in ec[0].lower():
                 leadership_rating += 1
-        #respected_program_rating = 0
+            if ec[0].lower() in "founder".lower():
+                leadership_rating += 1
+            if ec[0].lower() in "Research".lower():
+                leadership_rating += 1
+            if ec[0].lower() in "national merit".lower():
+                leadership_rating += 1
         return min((commitment_rating + leadership_rating)/2,1.0)
-        #commitment computation -- tell them to average over 4 years, so if you did an ec 52 weeks per year for 2 years, input 26 weeks per year for 4
-        #good but not cracked summer programs
-        #look for "led" keyword
-
-    def awards_bonus(self):
-        return 0
-        #competitiveness bonus
-        #substring search for things like nmsf--non goat awards
 
     def get_acceptance(self):
         coll = open(college_data, 'r')
@@ -101,9 +119,6 @@ class chancer:
         schools = [c.split('\t')[0] for c in clines]
         acc = [c.split('\t')[2] for c in clines]
         return float(acc[schools.index(self.school)])/100
-
-
-
 
 class profile:
     def __init__(self, acceptance_rate, sat_rating, gpa_rating, ecs_sent, ecs_bonus, goat_rating):
@@ -116,4 +131,4 @@ class profile:
 
     def chance(self):
         chance = max(self.acceptance_rate * (self.ecs_sent) - (self.sat_rating + self.gpa_rating) + bonus * (self.ecs_bonus), self.goat_rating)
-        return min(chance, 1.0)
+        return min(chance, .9)

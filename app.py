@@ -144,17 +144,20 @@ def chanceme():
         hrs = [hr_0, hr_1, hr_2, hr_3, hr_4, hr_5, hr_6, hr_7, hr_8, hr_9]
         ecs = zip(ecs,hrs)
         ids = []
+        ec_list = []
         for ec in ecs:
             if ec[0] != "":
                 task = compute_sentiment.apply_async([ec[0]])
                 ids.append(url_for('status',task_id=task.id))
-
-        bot = chancer.chancer(school, sat, gpa, ecs)
+                ec_list.append(ec)
+        print(ec_list)
+        bot = chancer.chancer(school, sat, gpa, ec_list)
         sat_rating = bot.rate_sat()
         gpa_rating = bot.rate_gpa()
         ec_bonus = bot.ecs_bonus()
         acceptance_rate = bot.get_acceptance()
         goat_rating = bot.goat_status()
+        print("GOAT {}".format(goat_rating))
 
         return jsonify({"ids":ids,"sat_rating":sat_rating,"gpa_rating":gpa_rating,"ec_bonus":ec_bonus,"acceptance_rate":acceptance_rate,"goat_rating":goat_rating})
 
@@ -168,7 +171,6 @@ def results():
         global perc
         perc = "{:.1f}".format(100*profile.chance())
         return jsonify({"chance":profile.chance()})
-        #return render_template('results.html',res=profile.chance())
 
 @app.route('/results')
 def result():

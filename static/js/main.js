@@ -146,7 +146,7 @@ function start_long_task() {
         type: 'POST',
         url: '/chanceme',
         datatype: 'json',
-        data: datas,
+        data: JSON.stringify(datas),
         success: function (sfgsd) {
             let status_url = sfgsd.ids
             update_progress(status_url, sfgsd)

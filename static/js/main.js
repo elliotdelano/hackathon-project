@@ -56,7 +56,7 @@ async function update_progress(status_url, fast) {
             if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
                 console.log(data)
                 if ('result' in data) {
-                    results.push(data.result)
+                    results.push(data.result || 0)
                 }
             }
         });

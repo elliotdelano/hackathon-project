@@ -112,55 +112,55 @@ def index():
 @app.route('/chanceme',methods=["GET","POST"])
 def chanceme():
     if request.method == "POST":
-        sat = request.form['sat']
-        gpa = request.form['gpa']
-        ec_0 = request.form['ec_0']
-        hr_0 = request.form['hr_0']
-        ec_1 = request.form['ec_1']
-        hr_1 = request.form['hr_1']
-        ec_2 = request.form['ec_2']
-        hr_2 = request.form['hr_2']
-        ec_3 = request.form['ec_3']
-        hr_3 = request.form['hr_3']
-        ec_4 = request.form['ec_4']
-        hr_4 = request.form['hr_4']
-        ec_5 = request.form['ec_5']
-        hr_5 = request.form['hr_5']
-        ec_6 = request.form['ec_6']
-        hr_6 = request.form['hr_6']
-        ec_7 = request.form['ec_7']
-        hr_7 = request.form['hr_7']
-        ec_8 = request.form['ec_8']
-        hr_8 = request.form['hr_8']
-        ec_9 = request.form['ec_9']
-        hr_9 = request.form['hr_9']
-        school = request.form['school']
+        sat = request.json['sat']
+        gpa = request.json['gpa']
+        ec_0 = request.json['ec_0']
+        hr_0 = request.json['hr_0']
+        ec_1 = request.json['ec_1']
+        hr_1 = request.json['hr_1']
+        ec_2 = request.json['ec_2']
+        hr_2 = request.json['hr_2']
+        ec_3 = request.json['ec_3']
+        hr_3 = request.json['hr_3']
+        ec_4 = request.json['ec_4']
+        hr_4 = request.json['hr_4']
+        ec_5 = request.json['ec_5']
+        hr_5 = request.json['hr_5']
+        ec_6 = request.json['ec_6']
+        hr_6 = request.json['hr_6']
+        ec_7 = request.json['ec_7']
+        hr_7 = request.json['hr_7']
+        ec_8 = request.json['ec_8']
+        hr_8 = request.json['hr_8']
+        ec_9 = request.json['ec_9']
+        hr_9 = request.json['hr_9']
+        school = request.json['school']
         ecs = [ec_0,ec_1,ec_2,ec_3,ec_4,ec_5,ec_6,ec_7,ec_8,ec_9]
         print(ecs)
         hrs = [hr_0, hr_1, hr_2, hr_3, hr_4, hr_5, hr_6, hr_7, hr_8, hr_9]
         ecs = zip(ecs,hrs)
-        bot = chancer.chancer(school,sat,gpa,ecs,[])
-        ec_sent = 0
         ids = []
         for ec in ecs:
             if ec[0] != "":
                 task = compute_sentiment.apply_async([ec[0]])
-                ids.append(task.id)
+                ids.append(url_for('status',task_id=task.id))
 
+        bot = chancer.chancer(school, sat, gpa, ecs)
         sat_rating = bot.rate_sat()
         gpa_rating = bot.rate_gpa()
         ec_bonus = bot.ecs_bonus()
+        acceptance_rate = bot.get_acceptance()
+        goat_rating = bot.goat_status()
 
-        return jsonify({"ids":ids,"sat_rating":sat_rating,"gpa_rating":gpa_rating,"ec_bonus":ec_bonus})
+        return jsonify({"ids":ids,"sat_rating":sat_rating,"gpa_rating":gpa_rating,"ec_bonus":ec_bonus,"acceptance_rate":acceptance_rate,"goat_rating":goat_rating})
 
 
 @app.route('/results',methods = ["GET","POST"])
 def results():
-    return 0
-        #profile = chancer.profile()
-        #chances = profile.chance()
-        #chances = 0
-        #return render_template('results.html',res=chances)
+    if request.method == "POST":
+        ecs_sent = sum(request.json['sents'])
+        profile = chancer.profile(request.json['acceptance_rate'], request.json['sat_rating'], request.json['gpa_rating'], ecs_sent, request.json['ecs_bonus'], request.json['goat_rating'])
+        return render_template('results.html',res=profile.chance())
 
 
 if __name__ == '__main__':

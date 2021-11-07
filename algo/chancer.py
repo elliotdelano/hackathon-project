@@ -3,22 +3,10 @@ import csv
 bonus = .1
 hours_spread = 100
 
-college_data = open("static/CollegeAdmissionData.tsv")
+college_data = "static/CollegeAdmissionData.tsv"
 
 def gaussian(x, mu, sig):
     return np.exp(-np.power(x - mu, 2.) / (2 * np.power(sig, 2.)))
-
-def sat_range_from_school(school):
-    read_tsv = csv.reader(college_data, delimiter="\n")
-    schools = []
-    scores = []
-    for row in read_tsv:
-        value = row.split("\t")
-        schools.push(value[0])
-        scores.push(value[1].split("\r")[0])
-    for i in range(len(schools)):
-        if school == schools[i]:
-            return sat_desipher(scores[i])
 
 def sat_desipher(raw):
     value = raw
@@ -28,13 +16,24 @@ def sat_desipher(raw):
         value = '1' + value + '0'
     return int(value)
 
+def sat_range_from_school(school):
+    coll = open(college_data,'r')
+    clines =  coll.readlines()
+    coll.close()
+    print(clines)
+    schools = [c.split('\t')[0] for c in clines]
+    scores = [c.split('\t')[1] for c in clines]
+    for i in range(len(schools)):
+        if school == schools[i]:
+            print(sat_desipher(scores[i]))
+            return sat_desipher(scores[i])
+
 class chancer:
-    def __init__(self, school, sat, gpa, ecs, awards):
+    def __init__(self, school, sat, gpa, ecs):
         self.school = school
         self.sat = sat
         self.gpa = gpa
         self.ecs = ecs
-        self.awards = awards
 
     def goat_status(self):
         #ec/award substring if statements
@@ -42,19 +41,21 @@ class chancer:
         return 0
 
     def rate_sat(self):
+        '''
         school_range = sat_range_from_school(self.school)
-        if self.sat >= 1600:
+        if int(self.sat) >= 1600:
             return 0.0
-        if self.sat < 1600:
-            return 1 - self.sat / school_range
-        return None
+        if int(self.sat) < 1600:
+            return 1 - int(self.sat) / school_range
+        '''
+        return 0
 
     def rate_gpa(self):
         if self.gpa >= 4.0:
             return 0.0
         if self.gpa < 4.0:
             return 1 - self.gpa/4
-        return None
+        return 0.0
 
     def ecs_bonus(self):
         commitment_rating = 1 - gaussian(sum([ec[1] for ec in self.ecs]),0,hours_spread)
@@ -80,22 +81,20 @@ class chancer:
         #substring search for things like nmsf--non goat awards
 
     def get_acceptance(self):
-        return 0
+        return 100.0
 
 
 
 
 class profile:
-    def __init__(self, acceptance_rate, sat_rating, gpa_rating, ecs_sent, ecs_bonus, awards_sent, awards_bonus, goat_rating):
+    def __init__(self, acceptance_rate, sat_rating, gpa_rating, ecs_sent, ecs_bonus, goat_rating):
         self.acceptance_rate  = acceptance_rate
         self.sat_rating = sat_rating
         self.gpa_rating = gpa_rating
         self.ecs_sent = ecs_sent
         self.ecs_bonus = ecs_bonus
-        self.awards_sent = awards_sent
-        self.awards_bonus = awards_bonus
         self.goat_rating = goat_rating
 
     def chance(self):
-        chance = max(self.acceptance_rate * (self.ecs_sent + self.awards_sent) - (self.sat_rating + self.gpa_rating) + bonus * (self.ecs_bonus + self.awards_bonus), self.goat_rating)
+        chance = max(self.acceptance_rate * (self.ecs_sent) - (self.sat_rating + self.gpa_rating) + bonus * (self.ecs_bonus), self.goat_rating)
         return min(chance, 1.0)

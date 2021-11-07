@@ -26,7 +26,7 @@ xhttp.onreadystatechange = function () {
         document.getElementById("collegeDropdown").appendChild(li)
     }
 };
-xhttp.open("GET", "../static/CollegeAdmissionData.tsv", true);
+xhttp.open("GET", "/static/CollegeAdmissionData.tsv", true);
 xhttp.send();
 
 function filterFunction() {

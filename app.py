@@ -13,28 +13,28 @@ def index():
 def chanceme():
     if request.method == "POST":
         sat = request.form['sat']
-        school = request.form['school']
         gpa = request.form['gpa']
         ec_0 = request.form['ec_0']
         hr_0 = request.form['hr_0']
         ec_1 = request.form['ec_1']
-        hr_1 = request.form['hr_0']
+        hr_1 = request.form['hr_1']
         ec_2 = request.form['ec_2']
-        hr_2 = request.form['hr_0']
+        hr_2 = request.form['hr_2']
         ec_3 = request.form['ec_3']
-        hr_3 = request.form['hr_0']
+        hr_3 = request.form['hr_3']
         ec_4 = request.form['ec_4']
-        hr_4 = request.form['hr_0']
+        hr_4 = request.form['hr_4']
         ec_5 = request.form['ec_5']
-        hr_5 = request.form['hr_0']
+        hr_5 = request.form['hr_5']
         ec_6 = request.form['ec_6']
-        hr_6 = request.form['hr_0']
+        hr_6 = request.form['hr_6']
         ec_7 = request.form['ec_7']
-        hr_7 = request.form['hr_0']
+        hr_7 = request.form['hr_7']
         ec_8 = request.form['ec_8']
-        hr_8 = request.form['hr_0']
+        hr_8 = request.form['hr_8']
         ec_9 = request.form['ec_9']
-        hr_9 = request.form['hr_0']
+        hr_9 = request.form['hr_9']
+        school = request.form['school']
         ecs = [ec_0,ec_1,ec_2,ec_3,ec_4,ec_5,ec_6,ec_7,ec_8,ec_9]
         hrs = [hr_0, hr_1, hr_2, hr_3, hr_4, hr_5, hr_6, hr_7, hr_8, hr_9]
         ecs = zip(ecs,hrs)
@@ -47,6 +47,11 @@ def chanceme():
         sat_rating = bot.rate_sat()
         gpa_rating = bot.rate_gpa()
         ec_bonus = bot.ecs_bonus()
+
+        #profile = chancer.profile()
+        #chances = profile.chance()
+        chances = 0
+        return render_template('results.html',res=chances)
 
 
 if __name__ == '__main__':

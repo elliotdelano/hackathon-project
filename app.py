@@ -112,6 +112,7 @@ def index():
 @app.route('/chanceme',methods=["GET","POST"])
 def chanceme():
     if request.method == "POST":
+        print("elliot bad: {}".format(request.json))
         sat = request.json['sat']
         gpa = request.json['gpa']
         ec_0 = request.json['ec_0']

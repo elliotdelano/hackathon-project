@@ -54,6 +54,7 @@ function update_progress(status_url, fast) {
     for (let url of status_url) {
         $.getJSON(url, function (data) {
             if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
+                console.log(data)
                 if ('result' in data) {
                     results.push(data.result)
                 }

@@ -97,12 +97,11 @@ def status(task_id):
         if 'result' in task.info:
             response['result'] = task.info['result']
     else:
-        # something went wrong in the background job
         response = {
             'state': task.state,
             'current': 1,
             'total': 1,
-            'status': str(task.info),  # this is the exception raised
+            'status': str(task.info),
         }
     return jsonify(response)
 
@@ -113,7 +112,6 @@ def index():
 @app.route('/chanceme',methods=["GET","POST"])
 def chanceme():
     if request.method == "POST":
-        print("elliot bad: {}".format(request.get_json()))
         sat = request.get_json()['sat']
         gpa = request.get_json()['gpa']
         ec_0 = request.get_json()['ec_0']

@@ -46,69 +46,78 @@ function filterFunction() {
 }
 
 $(function () {
-    $('#start-bg-job').click(start_long_task);
+    $('#getResults').click(start_long_task);
 });
 
-function update_progress(status_url, nanobar, status_div) {
-    // send GET request to status URL
-    $.getJSON(status_url, function (data) {
-        // update UI
-        //use this to update global vars for current and total
-        percent = parseFloat(data['current'] * 100 / data['total']);
-        addData(chart, parseFloat(data['current']), parseFloat(data['status']))
-        update_boot(percent);
-        nanobar.go(percent);
-        $(status_div.childNodes[1]).text(percent + '%');
-        //use status to extract loss value and update global loss value
-        $(status_div.childNodes[2]).text(data['status']);
-        $('#boot_status').html("Loss Status: " + data['status']);
-        // (closing the tab will continue training, but graph progress will not be saved)
-        if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
-            if ('result' in data) {
-                // show result
-                //or update chart.js here, as the values are already updating content asynchronously here
-                //perhaps init chart before this code, then call update method in here
-                $(status_div.childNodes[3]).text('Result: ' + data['result']);
+function update_progress(status_url, fast) {
+    let results = []
+    for (let url of status_url) {
+        $.getJSON(url, function (data) {
+            if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
+                if ('result' in data) {
+                    results.push(data.result)
+                }
             }
-            else {
-                // something unexpected happened
-                $(status_div.childNodes[3]).text('Result: ' + data['state']);
-            }
+        });
+    }
+    if (results.length == status_url.length) {
+        let data = {
+            sents: results,
+            sat_rating: fast.sat_rating,
+            gpa_rating: fast.gpa_rating,
+            ec_bonus: fast.ec_bonus,
+            acceptance_rate: fast.acceptance_rate,
+            goat_rating: fast.goat_rating
         }
-        else {
-            // rerun in 2 seconds
-            setTimeout(function () {
-                update_progress(status_url, nanobar, status_div);
-            }, 2000);
-        }
-    });
+        $.ajax({
+            type: 'POST',
+            url: '/results',
+            datatype: 'json',
+            data: data
+        });
+    } else {
+        setTimeout(function () {
+            update_progress(status_url, fast);
+        }, 2000);
+    }
+
 }
 
 function start_long_task() {
-    // add task status elements
+    let data = {
+        sat: $('#sat').value,
+        gpa: $('#gpa').value,
+        ec_0: $('#ec_0').value,
+        hr_0: $('#hr_0').value,
+        ec_1: $('#ec_1').value,
+        hr_1: $('#hr_1').value,
+        ec_2: $('#ec_2').value,
+        hr_2: $('#hr_2').value,
+        ec_3: $('#ec_3').value,
+        hr_3: $('#hr_3').value,
+        ec_4: $('#ec_4').value,
+        hr_4: $('#hr_4').value,
+        ec_5: $('#ec_5').value,
+        hr_5: $('#hr_5').value,
+        ec_6: $('#ec_6').value,
+        hr_6: $('#hr_6').value,
+        ec_7: $('#ec_7').value,
+        hr_7: $('#hr_7').value,
+        ec_8: $('#ec_8').value,
+        hr_8: $('#hr_8').value,
+        ec_9: $('#ec_9').value,
+        hr_9: $('#hr_9').value,
+        school: $('#school').value,
+    }
 
-
-    div = $('<div class="progress"><div></div><div>0%</div><div>...</div><div>&nbsp;</div></div>');
-    $('#progress').append(div);
-
-    // create a progress bar
-    var nanobar = new Nanobar({
-        bg: '#B551CA',
-        target: div[0].childNodes[0]
-    });
-
-    // send ajax POST request to start background job
     $.ajax({
         type: 'POST',
-        url: '/longtask',
-        success: function (data, status, request) {
-            status_url = request.getResponseHeader('Location');
-            //console.log(status_url);
-            task_id = status_url;
-            update_progress(status_url, nanobar, div[0]);
+        url: '/chanceme',
+        datatype: 'json',
+        success: function (sfgsd) {
+            let status_url = sfgsd.ids
+            update_progress(status_url, sfgsd)
         },
-        error: function () {
-            alert('Unexpected error');
-        }
+        data: data
     });
 }

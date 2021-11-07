@@ -49,7 +49,7 @@ function filterFunction() {
 //     $('#getResults').click(start_long_task);
 // });
 
-function update_progress(status_url, fast) {
+async function update_progress(status_url, fast) {
     let results = []
     for (let url of status_url) {
         $.getJSON(url, function (data) {

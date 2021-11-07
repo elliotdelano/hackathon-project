@@ -1,5 +1,6 @@
 let nameGlobal = []
 let satScoresGlobal = []
+let schoolGlobal = undefined
 
 let xhttp = new XMLHttpRequest()
 xhttp.onreadystatechange = function () {
@@ -54,16 +55,12 @@ async function update_progress(status_url, fast) {
     for (let url of status_url) {
         await $.getJSON(url, function (data) {
             if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
-                console.log(data)
                 if ('result' in data) {
                     results.push(data.result || 0)
                 }
             }
         });
     }
-    console.log(results.length)
-    console.log(results)
-    console.log(status_url.length)
     if (results.length == status_url.length) {
         let data = {
             sents: results,
@@ -78,6 +75,11 @@ async function update_progress(status_url, fast) {
             url: '/results',
             datatype: 'json',
             data: JSON.stringify(data),
+            success: function (info) {
+                window.location.href = "../../templates/results.html";
+                $('#school').text(schoolGlobal)
+                $('#chance').text(info.chance)
+            },
             contentType: 'application/json'
         });
     } else {
@@ -119,7 +121,7 @@ function start_long_task() {
         school: $('#school').val(),
     }
 
-    console.log(datas)
+    schoolGlobal = datas.school
 
     $.ajax({
         type: 'POST',

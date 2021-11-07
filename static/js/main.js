@@ -72,13 +72,12 @@ async function update_progress(status_url, fast) {
         }
         $.ajax({
             type: 'POST',
-            url: '/results',
+            url: '/compute',
             datatype: 'json',
             data: JSON.stringify(data),
             success: function (info) {
-                window.location.href = "../../templates/results.html";
-                $('#school').text(schoolGlobal)
-                $('#chance').text(info.chance)
+                window.location.href = "/results";
+
             },
             contentType: 'application/json'
         });

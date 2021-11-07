@@ -10,7 +10,8 @@ import pandas as pd
 import logging
 import nltk
 
-
+sch = ""
+perc = 0.0
 app = Flask(__name__)
 
 app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
@@ -136,6 +137,8 @@ def chanceme():
         ec_9 = request.get_json()['ec_9']
         hr_9 = request.get_json()['hr_9']
         school = request.get_json()['school']
+        global sch
+        sch = school
         ecs = [ec_0,ec_1,ec_2,ec_3,ec_4,ec_5,ec_6,ec_7,ec_8,ec_9]
         print(ecs)
         hrs = [hr_0, hr_1, hr_2, hr_3, hr_4, hr_5, hr_6, hr_7, hr_8, hr_9]
@@ -156,15 +159,20 @@ def chanceme():
         return jsonify({"ids":ids,"sat_rating":sat_rating,"gpa_rating":gpa_rating,"ec_bonus":ec_bonus,"acceptance_rate":acceptance_rate,"goat_rating":goat_rating})
 
 
-@app.route('/results',methods = ["GET","POST"])
+@app.route('/compute',methods = ["GET","POST"])
 def results():
     if request.method == "POST":
         ecs_sent = sum(request.get_json()['sents'])
         profile = chancer.profile(request.get_json()['acceptance_rate'], request.get_json()['sat_rating'], request.get_json()['gpa_rating'], ecs_sent, request.get_json()['ecs_bonus'], request.get_json()['goat_rating'])
         print(profile.chance())
+        global perc
+        perc = "{:.1f}".format(100*profile.chance())
         return jsonify({"chance":profile.chance()})
         #return render_template('results.html',res=profile.chance())
 
+@app.route('/results')
+def result():
+    return render_template('results.html',res=perc,sch=sch)
 
 if __name__ == '__main__':
     app.run(debug=True)

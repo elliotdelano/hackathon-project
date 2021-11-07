@@ -36,9 +36,23 @@ class chancer:
         self.ecs = ecs
 
     def goat_status(self):
+        goat_rating = 0.0
+        for ec in self.ecs:
+            if ec.lower() in "IMO medalist".lower():
+                goat_rating = 1.0
+            if ec.lower() in "IChO medalist".lower():
+                goat_rating = 1.0
+            if ec.lower() in "IOI medalist".lower():
+                goat_rating = 1.0
+            if ec.lower() in "IOL medalist".lower():
+                goat_rating = 1.0
+            if ec.lower() in "IBO medalist".lower():
+                goat_rating = 1.0
+            if ec.lower() in "IPhO medalist".lower():
+                goat_rating = 1.0
         #ec/award substring if statements
         #check for t20 names + research (check for name then research, not a combined string)
-        return 0
+        return goat_rating
 
     def rate_sat(self):
         '''

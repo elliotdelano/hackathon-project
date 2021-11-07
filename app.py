@@ -161,7 +161,9 @@ def results():
     if request.method == "POST":
         ecs_sent = sum(request.get_json()['sents'])
         profile = chancer.profile(request.get_json()['acceptance_rate'], request.get_json()['sat_rating'], request.get_json()['gpa_rating'], ecs_sent, request.get_json()['ecs_bonus'], request.get_json()['goat_rating'])
-        return render_template('results.html',res=profile.chance())
+        print(profile.chance())
+        return jsonify({"chance":profile.chance()})
+        #return render_template('results.html',res=profile.chance())
 
 
 if __name__ == '__main__':

@@ -19,20 +19,21 @@
             <div class="collapse navbar-collapse" id="navbarsExample04">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">About</a>
+                        <a class="nav-link" aria-current="page" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Input</a>
+                        <a class="nav-link" aria-current="page" href="#input">Input</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Credits</a>
+                        <a class="nav-link" aria-current="page" href="#credits">Credits</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="row m-0 mt-4">
+
+    <div class="row m-0 mt-5" id="about">
         <div class="card bg-header text-light border-0 rounded-0">
             <div class="card-body">
                 <h1 class="text-center display-6">What is ChanceMe AI?</h1>
@@ -41,15 +42,22 @@
                     performance as well as the colleges you are interested in
                     applying to, and produces a realistic result of your likelihood
                     of acceptance. Try it out in the form below.</p>
+                <h1 class="text-center display-6">How does it work?</h1>
+                <p class="text-center ">ChanceMe AI takes in numerical scores and 
+                  analyzes the r/chanceme subreddit to judge the appeal of your 
+                  extracurricular activities. It processes this data, and returns 
+                a final percentage score of your likelihood of acceptance. Judging 
+              extracurricular activities is possible through a natural language processing model
+            that extrapolates a numerical sentiment value for a particular phrase.</p>
             </div>
         </div>
     </div>
-    <div class="row m-3 mt-4">
+    <div class="row m-3 mt-4" id="input">
         <div class="container">
             <div class="card bg-light text-dark shadow">
                 <div class="card-body">
                     <h1 class="text-center">Profile</h1>
-                    <p class="text-center ">Can you win college?</p>
+                    <p class="text-center ">Enter your info</p>
                     <form action="/chanceme" method="POST" enctype="multipart/form-data" autocomplete="off">
 
                         <div class="row mb-3">
@@ -255,15 +263,24 @@
         </div>
     </div>
 
-    <div class="row m-3 mt-4">
+    <div class="row m-3 mt-4" id="credits">
         <div class="container">
             <div class="card bg-light text-dark shadow">
                 <div class="card-body">
-                    <h1 class="text-center">Credits</h1>
-                    <p class="text-center ">Backend and algorithm - Brennan Overhoff</p>
-                    <p class="text-center ">Frontend and algorithm - Elliot Patterson</p>
-                    <p class="text-center ">Website - Logan Head</p>
-                    <p class="text-center ">Algorithm - Jacob Rivera</p>
+                    <h1 class="text-center mb-3">Credits</h1>
+                    <div class="row">
+                      <a role="button" class="btn btn-lg btn-link mb-2" href="https://github.com/KevHg/reddit-sentiment">Reddit Sentiment Analysis</a>
+                      <a role="button" class="btn btn-lg btn-link mb-2" href="https://downloads.compassprep.com/compass_guide_to_admission_testing.pdf">College Data</a>
+                      <a role="button" class="btn btn-lg btn-link mb-5" href="https://www.reddit.com/r/chanceme/">ChanceMe subreddit</a>
+                      <hr class="mb-5">
+                      <h3 class="text-center">Team</h3>
+                      <p class="text-center ">Backend and algorithm - Brennan Overhoff</p>
+                      <p class="text-center ">Frontend and algorithm - Elliot Patterson</p>
+                      <p class="text-center ">Website - Logan Head</p>
+                      <p class="text-center ">Algorithm - Jacob Rivera</p>
+                    </div>
+                    
+                   
                 </div>
             </div>
         </div>

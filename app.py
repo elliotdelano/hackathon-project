@@ -112,30 +112,30 @@ def index():
 @app.route('/chanceme',methods=["GET","POST"])
 def chanceme():
     if request.method == "POST":
-        print("elliot bad: {}".format(request.json))
-        sat = request.json['sat']
-        gpa = request.json['gpa']
-        ec_0 = request.json['ec_0']
-        hr_0 = request.json['hr_0']
-        ec_1 = request.json['ec_1']
-        hr_1 = request.json['hr_1']
-        ec_2 = request.json['ec_2']
-        hr_2 = request.json['hr_2']
-        ec_3 = request.json['ec_3']
-        hr_3 = request.json['hr_3']
-        ec_4 = request.json['ec_4']
-        hr_4 = request.json['hr_4']
-        ec_5 = request.json['ec_5']
-        hr_5 = request.json['hr_5']
-        ec_6 = request.json['ec_6']
-        hr_6 = request.json['hr_6']
-        ec_7 = request.json['ec_7']
-        hr_7 = request.json['hr_7']
-        ec_8 = request.json['ec_8']
-        hr_8 = request.json['hr_8']
-        ec_9 = request.json['ec_9']
-        hr_9 = request.json['hr_9']
-        school = request.json['school']
+        print("elliot bad: {}".format(request.get_json()))
+        sat = request.get_json()['sat']
+        gpa = request.get_json()['gpa']
+        ec_0 = request.get_json()['ec_0']
+        hr_0 = request.get_json()['hr_0']
+        ec_1 = request.get_json()['ec_1']
+        hr_1 = request.get_json()['hr_1']
+        ec_2 = request.get_json()['ec_2']
+        hr_2 = request.get_json()['hr_2']
+        ec_3 = request.get_json()['ec_3']
+        hr_3 = request.get_json()['hr_3']
+        ec_4 = request.get_json()['ec_4']
+        hr_4 = request.get_json()['hr_4']
+        ec_5 = request.get_json()['ec_5']
+        hr_5 = request.get_json()['hr_5']
+        ec_6 = request.get_json()['ec_6']
+        hr_6 = request.get_json()['hr_6']
+        ec_7 = request.get_json()['ec_7']
+        hr_7 = request.get_json()['hr_7']
+        ec_8 = request.get_json()['ec_8']
+        hr_8 = request.get_json()['hr_8']
+        ec_9 = request.get_json()['ec_9']
+        hr_9 = request.get_json()['hr_9']
+        school = request.get_json()['school']
         ecs = [ec_0,ec_1,ec_2,ec_3,ec_4,ec_5,ec_6,ec_7,ec_8,ec_9]
         print(ecs)
         hrs = [hr_0, hr_1, hr_2, hr_3, hr_4, hr_5, hr_6, hr_7, hr_8, hr_9]
@@ -159,8 +159,8 @@ def chanceme():
 @app.route('/results',methods = ["GET","POST"])
 def results():
     if request.method == "POST":
-        ecs_sent = sum(request.json['sents'])
-        profile = chancer.profile(request.json['acceptance_rate'], request.json['sat_rating'], request.json['gpa_rating'], ecs_sent, request.json['ecs_bonus'], request.json['goat_rating'])
+        ecs_sent = sum(request.get_json()['sents'])
+        profile = chancer.profile(request.get_json()['acceptance_rate'], request.get_json()['sat_rating'], request.get_json()['gpa_rating'], ecs_sent, request.get_json()['ecs_bonus'], request.get_json()['goat_rating'])
         return render_template('results.html',res=profile.chance())
 
 

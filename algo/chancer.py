@@ -51,10 +51,10 @@ class chancer:
         return 0
 
     def rate_gpa(self):
-        if self.gpa >= 4.0:
+        if float(self.gpa) >= 4.0:
             return 0.0
-        if self.gpa < 4.0:
-            return 1 - self.gpa/4
+        if float(self.gpa) < 4.0:
+            return 1 - float(self.gpa)/4
         return 0.0
 
     def ecs_bonus(self):

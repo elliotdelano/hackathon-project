@@ -69,7 +69,7 @@ async function update_progress(status_url, fast) {
             sents: results,
             sat_rating: fast.sat_rating,
             gpa_rating: fast.gpa_rating,
-            ec_bonus: fast.ec_bonus,
+            ecs_bonus: fast.ec_bonus,
             acceptance_rate: fast.acceptance_rate,
             goat_rating: fast.goat_rating
         }

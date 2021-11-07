@@ -9,6 +9,7 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
+      <img src="/static/img/die-01.png" alt="" width="36" height="36" class="d-inline-block align-text-top">
       <a class="navbar-brand" href="#">ChanceMe AI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
         aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,13 +39,13 @@
           ChanceMe AI takes in all key indicators of your academic
           performance as well as the colleges you are interested in
           applying to, and produces a realistic result of your likelihood
-          of acceptance.</p>
+          of acceptance. Try it out in the form below.</p>
       </div>
     </div>
   </div>
   <div class="row m-3 mt-4">
     <div class="container">
-      <div class="card bg-light text-dark shadow-lg">
+      <div class="card bg-light text-dark shadow">
         <div class="card-body">
           <h1 class="text-center">Input Form</h1>
           <p class="text-center ">Can you win college?</p>
@@ -65,7 +66,8 @@
               <label for="school" class="form-label h3">College</label>
               <div class="col-3">
                 <div class="dropdown"><button type="button" data-bs-toggle="dropdown"
-                    class="w-100 btn btn-light border-secondary dropdown-toggle">Select College</button>
+                    class="w-100 btn btn-light border-secondary dropdown-toggle">Select
+                    College</button>
                   <ul id="collegeDropdown" class="dropdown-menu p-2 overflow-auto">
                     <li><input type="text" class="form-control mb-3" placeholder="Search.." id="collegeInputField"
                         onkeyup="filterFunction()"></li>
@@ -74,17 +76,18 @@
               </div>
 
               <div class="col">
-                <input type="text" class="form-control bg-white" id="school" name="school" placeholder="no college selected"  readonly>
+                <input type="text" class="form-control bg-white" id="school" name="school"
+                  placeholder="no college selected" readonly>
               </div>
             </div>
 
-            <div class="card bg-ec text-light shadow-sm mb-5 text-dark">
+            <div class="card bg-ec text-light shadow-sm text-dark">
               <div class="card-body">
-                <h1 class="text-center">Extracurriculars</h1>
+                <h1 class="text-center">Awards & Extracurriculars</h1>
                 <p class="text-center ">Input up to 10 extracurricular activities</p>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_0" class="form-label">Extracurricular 1</label>
+                    <label for="ec_0" class="form-label">Entry 1</label>
                     <input type="text" class="form-control" id="ec_0" name="ec_0" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -94,7 +97,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_1" class="form-label">Extracurricular 2</label>
+                    <label for="ec_1" class="form-label">Entry 2</label>
                     <input type="text" class="form-control" id="ec_1" name="ec_1" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -104,7 +107,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_2" class="form-label">Extracurricular 3</label>
+                    <label for="ec_2" class="form-label">Entry 3</label>
                     <input type="text" class="form-control" id="ec_2" name="ec_2" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -114,7 +117,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_3" class="form-label">Extracurricular 4</label>
+                    <label for="ec_3" class="form-label">Entry 4</label>
                     <input type="text" class="form-control" id="ec_3" name="ec_3" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -124,7 +127,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_4" class="form-label">Extracurricular 5</label>
+                    <label for="ec_4" class="form-label">Entry 5</label>
                     <input type="text" class="form-control" id="ec_4" name="ec_4" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -134,7 +137,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_5" class="form-label">Extracurricular 6</label>
+                    <label for="ec_5" class="form-label">Entry 6</label>
                     <input type="text" class="form-control" id="ec_5" name="ec_5" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -144,7 +147,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_6" class="form-label">Extracurricular 7</label>
+                    <label for="ec_6" class="form-label">Entry 7</label>
                     <input type="text" class="form-control" id="ec_6" name="ec_6" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -154,7 +157,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_7" class="form-label">Extracurricular 8</label>
+                    <label for="ec_7" class="form-label">Entry 8</label>
                     <input type="text" class="form-control" id="ec_7" name="ec_7" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -164,7 +167,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_8" class="form-label">Extracurricular 9</label>
+                    <label for="ec_8" class="form-label">Entry 9</label>
                     <input type="text" class="form-control" id="ec_8" name="ec_8" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -174,7 +177,7 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-10">
-                    <label for="ec_9" class="form-label">Extracurricular 10</label>
+                    <label for="ec_9" class="form-label">Entry 10</label>
                     <input type="text" class="form-control" id="ec_9" name="ec_9" placeholder="enter text...">
                   </div>
                   <div class="col">
@@ -193,7 +196,8 @@
           <div class="col"></div>
           <div class="col">
             <div class="row">
-              <button type="submit" class="btn btn-lg btn-primary">Chance Me!</button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#loadingModal" class="btn btn-lg btn-primary p-3"
+                id="getResults">Chance Me!</button>
             </div>
           </div>
           <div class="col"></div>
@@ -202,8 +206,40 @@
         </form>
       </div>
     </div>
-
   </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+    data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="card bg-light text-dark shadow-lg">
+          <div class="card-body">
+            <h1 class="text-center">Processing...</h1>
+            <p class="text-center ">Please wait for the task to finish.</p>
+            <div class="progress m-3">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-3 mt-4">
+    <div class="container">
+      <div class="card bg-light text-dark shadow">
+        <div class="card-body">
+          <h1 class="text-center">Credits</h1>
+          <p class="text-center ">Things that made this possible</p>
+        </div>
+      </div>
+    </div>
   </div>
 
 </body>

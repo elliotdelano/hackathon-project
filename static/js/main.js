@@ -21,8 +21,8 @@ xhttp.onreadystatechange = function () {
         let node = document.createTextNode(name)
         a.appendChild(node)
         li.appendChild(a)
-        a.classList.add("dropdown-item","h6")
-        a.onclick = function () {document.getElementById("school").value = name}
+        a.classList.add("dropdown-item", "h6")
+        a.onclick = function () { document.getElementById("school").value = name }
         document.getElementById("collegeDropdown").appendChild(li)
     }
 };
@@ -43,4 +43,72 @@ function filterFunction() {
             a[i].style.display = "none";
         }
     }
+}
+
+$(function () {
+    $('#start-bg-job').click(start_long_task);
+});
+
+function update_progress(status_url, nanobar, status_div) {
+    // send GET request to status URL
+    $.getJSON(status_url, function (data) {
+        // update UI
+        //use this to update global vars for current and total
+        percent = parseFloat(data['current'] * 100 / data['total']);
+        addData(chart, parseFloat(data['current']), parseFloat(data['status']))
+        update_boot(percent);
+        nanobar.go(percent);
+        $(status_div.childNodes[1]).text(percent + '%');
+        //use status to extract loss value and update global loss value
+        $(status_div.childNodes[2]).text(data['status']);
+        $('#boot_status').html("Loss Status: " + data['status']);
+        // (closing the tab will continue training, but graph progress will not be saved)
+        if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
+            if ('result' in data) {
+                // show result
+                //or update chart.js here, as the values are already updating content asynchronously here
+                //perhaps init chart before this code, then call update method in here
+                $(status_div.childNodes[3]).text('Result: ' + data['result']);
+            }
+            else {
+                // something unexpected happened
+                $(status_div.childNodes[3]).text('Result: ' + data['state']);
+            }
+        }
+        else {
+            // rerun in 2 seconds
+            setTimeout(function () {
+                update_progress(status_url, nanobar, status_div);
+            }, 2000);
+        }
+    });
+}
+
+function start_long_task() {
+    // add task status elements
+
+
+    div = $('<div class="progress"><div></div><div>0%</div><div>...</div><div>&nbsp;</div></div>');
+    $('#progress').append(div);
+
+    // create a progress bar
+    var nanobar = new Nanobar({
+        bg: '#B551CA',
+        target: div[0].childNodes[0]
+    });
+
+    // send ajax POST request to start background job
+    $.ajax({
+        type: 'POST',
+        url: '/longtask',
+        success: function (data, status, request) {
+            status_url = request.getResponseHeader('Location');
+            //console.log(status_url);
+            task_id = status_url;
+            update_progress(status_url, nanobar, div[0]);
+        },
+        error: function () {
+            alert('Unexpected error');
+        }
+    });
 }

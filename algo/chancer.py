@@ -81,7 +81,12 @@ class chancer:
         #substring search for things like nmsf--non goat awards
 
     def get_acceptance(self):
-        return 100.0
+        coll = open(college_data, 'r')
+        clines = coll.readlines()
+        coll.close()
+        schools = [c.split('\t')[0] for c in clines]
+        acc = [c.split('\t')[2] for c in clines]
+        return float(acc[schools.index(self.school)])/100
 
 
 

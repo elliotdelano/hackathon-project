@@ -57,6 +57,8 @@ async function update_progress(status_url, fast) {
             if (data['state'] != 'PENDING' && data['state'] != 'PROGRESS') {
                 if ('result' in data) {
                     results.push(data.result || 0)
+                } else {
+                    results.push(0)
                 }
             }
         }).fail(function () {
